@@ -90,11 +90,16 @@ img {
 .modal {
   position: absolute;
   width: 408px;
-  height: 584px;
+  min-height: 584px;
   background-color: var(--dairy);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop {
@@ -124,10 +129,25 @@ img {
   right: 24px;
   width: 24px;
   height: 24px;
+  padding: 0;
   background-color: var(--cornflower);
   border: 1px solid rgba(0, 0, 0, 0.10);
   border-radius: 50%;
   cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-btn:is(:hover, :focus) {
+  background-color: var(--ocean-color);
+  border: none;
+}
+
+.close-icon {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-btn:is(:hover, :focus) .close-icon {
+  fill: var(--white-color);
 }
 
 /*-------------- HEADER ---------------*/
@@ -283,9 +303,11 @@ img {
 .feature-logo {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 24px 0;
   background-color: var(--cloud-color);
   margin-bottom: 8px;
+  border-radius: 4px;
 }
 
 .features-list {
@@ -345,7 +367,7 @@ img {
 }
 
 .card-name-container {
-  padding: 32px 16px 0;
+  padding: 32px 0;
   margin-bottom: 8px;
 }
 
@@ -358,8 +380,8 @@ img {
 
 .social-list {
   display: flex;
+  justify-content: center;
   gap: 24px;
-  padding: 0 16px 32px;
 }
 
 .social-item {
@@ -373,7 +395,6 @@ img {
   align-items: center;
   width: 100%;
   height: 100%;
-  color: var(--cloud-color);
   border-radius: 50%;
   background-color: var(--iris-color);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -384,7 +405,7 @@ img {
 }
 
 .social-icon {
-  fill: currentColor;
+  fill: var(--cloud-color);
 }
 
 /*-------------- CUSTOMERS ---------------*/
@@ -453,9 +474,10 @@ img {
   background-color: var(--cloud-color);
   border: 1px solid var(--cornflower);
   border-radius: 4px;
-  transition-property: background-color, color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-button:hover,
@@ -487,19 +509,7 @@ img {
   overflow: hidden;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 40px 32px 0;
-  background-color: var(--iris-color);
-  transform: translateY(100%);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.developments-link:hover .overlay {
+.developments-link:hover .overlay-text {
   transform: translateY(0);
 }
 
@@ -509,6 +519,15 @@ img {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--cloud-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+  background-color: var(--iris-color);
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .developments-link:hover {
@@ -544,6 +563,7 @@ img {
 
 .footer-container {
   display: flex;
+  align-items: baseline;
 }
 
 .footer-logo {
