@@ -368,7 +368,6 @@ img {
 
 .card-name-container {
   padding: 32px 0;
-  margin-bottom: 8px;
 }
 
 .job-title {
@@ -376,6 +375,7 @@ img {
   line-height: 1.5;
   letter-spacing: 0.02em;
   text-align: center;
+  margin-bottom: 8px;
 }
 
 .social-list {
