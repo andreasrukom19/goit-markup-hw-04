@@ -85,11 +85,6 @@ img {
   padding: 0 15px;
 }
 
-.icon {
-  display: block;
-  margin: 0 auto;
-}
-
 /*-------------- MODAL ---------------*/
 
 .modal {
@@ -286,6 +281,8 @@ img {
 }
 
 .feature-logo {
+  display: flex;
+  justify-content: center;
   padding: 24px 0;
   background-color: var(--cloud-color);
   margin-bottom: 8px;
